@@ -14,6 +14,14 @@ def fib(n:Int, prev:Int = 0, next:Int = 1):Int = n match
   case _ => fib(n-1, next, (next + prev))
 }
 
+def initSegment[A](segment:List[A], list:List[A]):Boolean = (segment, list) match
+{
+  case (Nil, _) => true
+  case (hd1::tl1, hd2::tl2) if hd1==hd2 => initSegment(tl1, tl2)
+  case (_,_) => false
+}
+  
+
 
 def replaceNth[A](list:List[A], n:Int, obj:A):List[A]=
   if(list == Nil) throw new Exception("Index out of bound exception")
